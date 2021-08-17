@@ -1,0 +1,21 @@
+#Zu viel Antworten korrekt
+Besucher der westpazifischen Inselgruppe Yapstaunen darüber, dass dort ...?
+A* das Geld auf der Strasse liegt
+B* nur Essen, das gekocht worden ist, etwas kostet
+
+#Zu wenig Antworten korrekt
+Besucher der westpazifischen Inselgruppe Yapstaunen darüber, dass dort ...?
+A das Geld auf der Strasse liegt
+B nur Essen, das gekocht worden ist, etwas kostet
+
+#Zu wenig Antworten
+Laut einer Entscheidung der Stadt Wien verstösst es gegen die seit 2018 in Europa geltende Datenschutzgrundverordnung, wenn ...?
+A* auf einem Kaffeebecher der Vorname eines Kunden steht
+
+#Zu wenig Antworten
+Laut einer Entscheidung der Stadt Wien verstösst es gegen die seit 2018 in Europa geltende Datenschutzgrundverordnung, wenn ...?
+
+#Eine richte Antwort
+Laut einer Entscheidung der Stadt Wien verstösst es gegen die seit 2018 in Europa geltende Datenschutzgrundverordnung, wenn ...?
+A* das Geld auf der Strasse liegt
+B nur Essen, das gekocht worden ist, etwas kostet

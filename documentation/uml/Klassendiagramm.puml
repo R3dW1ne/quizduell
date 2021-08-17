@@ -1,0 +1,75 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+listOfQuestions "1" *-- "many" question : contains
+question -- answer
+quiz -- listOfQuestions
+quiz -- player
+lobby -- player
+lobby -- listOfSayings
+
+game -- quiz
+game -- lobby
+game -- command
+
+
+class game {
+- lobby
+- quiz
+}
+
+class quiz {
+- players : Player[]
+- numberOfQuestions : int
+- questions : listOfQuestions
+- questionsAlreadyAsked
+- /pointsPerPlayer
+}
+
+class player {
+- name : string
+- lastOponents : stack
+- lastGameResults : list
++ getName()
+}
+
+class lobby {
+- players : Player[]
+- sayings : listOfSayings
+- timer : Time
+- doMatchMaking()
++ outputSaying()
+}
+
+class command {
++ quit()
++ giveUp()
++ answer()
+}
+
+class question {
+- text : string
+- answers : list
++ getQuestionWithAnswers()
++ isAnwserCorrect(int)
+}
+
+class answer{
+- id : int
+- text : string
+- correctAnswer : boolean
+}
+
+class listOfQuestions {
+- questions : list
++ getNewRandomQuestion(questionsAlreadyAsked)
+}
+
+class listOfSayings {
+- sayings : list
++ getRandomSaying()
++ getDefaultSaying()
+
+}
+@enduml

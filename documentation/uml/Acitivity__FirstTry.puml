@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+:Name eineben;
+repeat
+:Befehl eingeben;
+if (highscore) then (true)
+:Highscore ausgeben;
+elseif (start) then (true)
+:Gegner finden;
+:Spiel starten;
+:Spiel spielen;
+:Hichscore ausgeben;
+else (quit)
+stop
+
+endif
+
+
+repeatwhile
+@enduml

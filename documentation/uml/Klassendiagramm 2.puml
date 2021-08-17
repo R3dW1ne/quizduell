@@ -1,0 +1,106 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+QuestionList "1" *--> "-questions *" Question
+Question "1" *--> "-possibleAnswers *" Answer
+
+QuestionFile  ..> Question
+QuestionFile  ..> Answer
+Quiz ..> QuestionList
+Quiz "0..1" --> "-players *" Player
+Quiz "1" --> "-scores *" Score
+Quiz <..  Lobby
+Lobby "0..1" --> "-players *" Player
+Lobby "1" *--> "-SayingList 1" SayingList
+
+Game "1" --> "*" Quiz
+Game "1" --> "1" Lobby
+Game "1" --> "*" Command
+QuestionList ..> QuestionFile
+Game "1" --> "-QuestionList 1" QuestionList
+
+
+class Game {
+- lobby: Lobby
+- quiz: Quiz
+}
+
+class Quiz {
+- players: Set<Player>
+- questions: Set<Question>
+- scores: Set<Score>
+- indexCurrentQuestion: int
++ Quiz(Set<Player>)
++ getNextQuestion(): String
+}
+
+class Score << entity >> {
+- question: Question
+- winner: Player
+}
+
+class Player {
+- name: String
+- lastOpponents: Stack<Player>
+- numberOfVictories: int
+- numberOfTies: int
+- numberOfDefeats: int
++ getName()
++ getHighscore(): String
++ getLastOpponents(): Stack<Player>
++ writeQuizResults(Player, int, int, int)
+}
+
+class Lobby {
+- players: Set<Player>
+- doMatchMaking(): Quiz
++ outputSaying(): String
+}
+
+enum Command {
+ QUIT
+ 1
+ 2
+ 3
+ HIGHSCORE
+ PLAY
+}
+
+class Question {
+- text: String
++ Question(String, Answer)
++ getQuestionWithAnswers(): Set<String>
++ isAnwserCorrect(int): Boolean
+}
+
+class Answer{
+- text: String
+- correctAnswer: boolean
++ Answer(String, Boolean)
++ getAnswerWithId(): String
++ isThisAnswerCorrect(): Boolean
+}
+
+class QuestionList {
+- questions: Set<Question>
+- QuestionList()
++ CreateQuestions()
++ getRandomQuestions(int): Set<Question>
+}
+
+
+class QuestionFile {
+- dir: String
+- filename: String
++ QuestionFile(String, String)
++ readQuestions(): List<Question>
+}
+
+class SayingList {
+- sayings: Set<String>
++ getRandomSaying(): String
++ getDefaultSayingJustBevorGameStarts(): String
+
+}
+@enduml

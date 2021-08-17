@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+left to right direction
+
+actor Server as Server
+actor Spieler as Spieler
+actor Timer as Timer
+
+Spieler -- (Quiz spielen)
+Spieler -- (Highscore anzeigen)
+Spieler -- (Hilfe anzeigen)
+
+(Quiz spielen) -- Timer
+(Matchmaking durchfuehren) -- Timer
+
+Server -- (Matchmaking durchfuehren)
+Server -- (Duelle hosten)
+Server -- (Eingelogte Spieler verwalten)
+@enduml

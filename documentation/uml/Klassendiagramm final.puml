@@ -1,0 +1,41 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+QuestionList "1" *--> "-questions *" Question
+Question "1" *--> "-possibleAnswers *" Answer
+QuestionFile  ..> Question
+QuestionFile  ..> Answer
+QuestionList ..> QuestionFile
+
+Server "1" *--> "-players 1" Players
+Server "1" *--> "-questionList 1" QuestionList
+Server "1" *--> "-gameMatcher 1" LookingForGame
+LookingForGame ..> QuizSession
+
+Server "- server 1" <--* "*" ServerWorker
+
+ServerWorker "1" *--> "-parser 1" Parser
+Parser "1" *--> "-commands *" CommandWords
+Parser ..> Command
+Command ..> CommandWord
+CommandWords "1" *--> "-validCommands *" CommandWord
+ServerWorker ..> Command
+
+ServerWorker "1" *--> "-player 1" Player
+ServerWorker "1" *--> "-output 1" IOutput
+Players  "1" *--> "-playerList *" Player
+Player "*" *--> "-location 1" Location
+Player "1" *--> "-stats 1" Stats
+Player "1" *--> "-currentQuizSession" QuizSession
+QuizSession "1" *--> "-quizResults 1" QuizResults
+QuizResults "1" *--> "-quizResultList *" QuizResult
+QuizSession ..> QuestionList
+QuizSession ..> SayingList
+
+IOutput <|-- OutputToStream
+OutputToStream ..> ColorCommandLine
+Interface IOutput
+enum Location
+enum CommandWord
+
+@enduml
